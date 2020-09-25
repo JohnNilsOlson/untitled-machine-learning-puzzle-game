@@ -2,8 +2,6 @@
 
 ## **Untitled Machine Learning Puzzle Game**
 _JohnNils Olson - Epicodus Capstone Project - September 2020_
-<hr/>
-
 
 <h3>Explore machine learning through a browser based interactive puzzle game.</h3>
 </div>
@@ -12,7 +10,6 @@ Create and train an artificial intelligence. Advance through different puzzles i
 <div align="center">
 
 ## **Technologies Used**
-<hr />
 
 JSX  
 CSS  
@@ -25,7 +22,6 @@ Brain.js
 <div align="center">
 
 ##  **Behavior Specifications**
-<hr />
 
 ### **Introduction Component**
 | Behavior | Input | Expected Output |
@@ -46,18 +42,19 @@ Brain.js
 | (At Any Time) User Selects Learn | "Learn" | Machine Learning Concepts |
 | (At Any Time) User Exits Game | "Exit" | Return to Introduction View |
 </div>
+
 <div align="center">
 
 ## **Component Diagram**
-<hr/>
 
 ![Diagram of React Components]()
 </div>
+
 <div align="center">
 
 ## **Installation Instructions**
-<hr/>
 </div>
+
 <div align="center">
 
 ### **Clone**
@@ -81,7 +78,6 @@ or...
 <div align="center">
 
 ## **Available Scripts**
-<hr/>
 </div>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -103,21 +99,18 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 <div align="center">
 
 ## **Bugs**
-<hr/>
 </div>
 No known issues.
 
 <div align="center">
 
 ## **Contact Information**
-<hr/>
 </div>
 JohnNils Olson - johnnils@gmail.com
 
 <div align="center">
 
 ## **License**
-<hr/>
 </div>
 The [MIT] license.
 Copyright (c) 2020 JohnNils Olson
