@@ -1,8 +1,12 @@
 import React from 'react';
+import RockPaperScissors from './RockPaperScissors';
 
 function App() {
   return (
-    <h1>Untitled Machine Learning Puzzle Game!</h1>
+    <React.Fragment>
+      <h1>Untitled Machine Learning Puzzle Game!</h1>
+      <RockPaperScissors/>
+    </React.Fragment>
   );
 }
 
