@@ -22,32 +22,90 @@ Brain.js
 <div align="center">
 
 ##  **Behavior Specifications**
+### **Introduction**
+<table width=100%>
+    <tr>
+        <td align="center" ="bold"><b>Behavior</b></td>
+        <td align="center"><b>Input</b></td>
+        <td align="center"><b>Output</b></td>
+    </tr>
+    <tr>
+        <td align="center">User Loads Project</td>
+        <td align="center">"Project URL"</td>
+        <td align="center">Introduction View</td>
+    </tr>
+    <tr>
+        <td align="center">User Selects Ready</td>
+        <td align="center">"Ready"</td>
+        <td align="center">AI Creation</td>
+    </tr>
+    <tr>
+        <td align="center">User Creates AI</td>
+        <td align="center">"User Name, AI Name"</td>
+        <td align="center">AI Birth</td>
+    </tr>
+    <tr>
+        <td align="center">User Starts Game</td>
+        <td align="center">"Begin"</td>
+        <td align="center">Level 1</td>
+    </tr>
+</table>
 
-### **Introduction Component**
-| Behavior | Input | Expected Output |
-| ---- | ---- | ---- |
-| User Loads Project | "Project URL" | Introduction View |
-| User Selects Ready | "Play" | AI Creation |
-| User Creates AI | User Name, AI Name | AI Birth |
-| User Starts Game | "Begin Training" | Level 1 |
-### **Level 1 Component - Rock, Paper, Scissors**
-| Behavior | Input | Expected Output |
-| ---- | ---- | ---- |
-| User Starts Game | "Begin Training | Level Introduction |
-| User Selects Ready | "Ready" | Level Stage 1 - Teach Rules |
-| User Correctly Defines the Rules of Rock Paper Scissors | "Rock -> Scissors, Scissors -> Paper, Paper -> Rock | Training AI |
-| AI Successfully Trained | "Continue" | Level Stage 2 - Train |
-| User Builds Training Data | "Rock", "Paper" or "Scissors" | Game Outcome |
-| User is Defeated by AI | n/a | Level Complete |
-| (At Any Time) User Selects Learn | "Learn" | Machine Learning Concepts |
-| (At Any Time) User Exits Game | "Exit" | Return to Introduction View |
+### **Level 1 - Rock, Paper, Scissors**
+<table width=100%>
+    <tr>
+        <td align="center"><b>Behavior</b></td>
+        <td align="center"><b>Input</b></td>
+        <td align="center"><b>Output</b></td>
+    </tr>
+    <tr>
+        <td align="center">User Starts Game</td>
+        <td align="center">n/a</td>
+        <td align="center">Level Introduction</td>
+    </tr>
+    <tr>
+        <td align="center">User Selects Ready</td>
+        <td align="center">"Ready"</td>
+        <td align="center">Level Stage 1 - Teach Rules</td>
+    </tr>
+    <tr>
+        <td align="center">User Correctly Defines the Rules of Rock Paper Scissors</td>
+        <td align="center">"Rock -> Scissors, Scissors -> Paper, Paper -> Rock</td>
+        <td align="center">Training AI</td>
+    </tr>
+    <tr>
+        <td align="center">AI Successfully Trained</td>
+        <td align="center">"Continue"</td>
+        <td align="center">Level Stage 2 - Train</td>
+    </tr>
+    <tr>
+        <td align="center">User Builds Training Data</td>
+        <td align="center">"Rock", "Paper" or "Scissors"</td>
+        <td align="center">Round Outcome</td>
+    </tr>
+    <tr>
+        <td align="center">User is Defeated by AI</td>
+        <td align="center">n/a</td>
+        <td align="center">Level Complete</td>
+    </tr>
+    <tr>
+        <td align="center">(At Any Time) User Selects Learn</td>
+        <td align="center">"Learn"</td>
+        <td align="center">Machine Learning Concepts</td>
+    </tr>
+    <tr>
+        <td align="center">(At Any Time) User Exits Game</td>
+        <td align="center">"Exit"</td>
+        <td align="center">Return to Introduction View</td>
+    </tr>
+</table>
 </div>
 
 <div align="center">
 
 ## **Component Diagram**
 
-![Diagram of React Components]()
+![Diagram of React Components](./public/app-component-diagram.png)
 </div>
 
 <div align="center">
