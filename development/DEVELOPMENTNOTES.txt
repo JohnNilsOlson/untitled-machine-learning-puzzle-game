@@ -1,2 +1,37 @@
 9/25/2020
 ---------
+Rock, Paper, Scissors Machine Learning Notes.
+
+.train(trainingData) -> pattern recognition 
+
+.run(input) -> outputs a prediction
+
+STAGE 1 (Maybe not really necessary, except for illustrating how it works, could just be single stage with pre-constructed trainingData):
+
+* user builds initial training data by correctly defining the rules of rock paper scissors
+* trainingData is structured ->
+  [
+    { input: [1,2], output: 2 },
+    { input: [1,3], output: 1 },
+    { input: [2,3], output: 3 }
+  ]
+
+  rock = 1
+  paper = 2
+  scissors = 3
+
+  input array represents a match, ie [1,2] represents rock vs paper.
+  output represents the winner, ie 2 represents rock beats paper.
+
+
+STAGE 2:
+
+each round will consist of:
+
+* user will be able to click 1 of 3 buttons -> rock (value: 1), paper (value: 2), or scissors (value: 3) -> value is stored in [0] of an input array.
+* neuralnet.run() will make a prediction for the AI -> rock (value: 1), paper (value: 2), or scissors (value: 3) -> value is stored in [1] of an input array.
+
+* round winner is determined -> score adjusted accordingly.
+* match results are saved, formatted into trainingData.
+* neuralnet is retrained.
+* repeat until AI reaches a specified win percentage.
