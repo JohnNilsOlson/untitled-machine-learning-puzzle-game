@@ -33,18 +33,43 @@ console.log('Random Move:');
 console.log(`${output4}`);
 
 // Guesses based on pattern.
+// -------------------------
+
+// User pattern Rock, Rock, Rock
+// Always guesses Paper
 const output5 = network.run(1,1,1);
 
 console.log('User Picked Rock Three Times:');
 console.log(`${output5}`);
 
+// User pattern Paper, Paper, Paper
+// Always guesses Scissors
 const output6 = network.run(2,2,2);
 
 console.log('User Picked Paper Three Times:');
 console.log(`${output6}`);
 
+// User pattern Scissors, Scissors, Scissors
+// Always guesses Rock
 const output7 = network.run(3,3,3);
 
 console.log('User Picked Scissors Three Times:');
 console.log(`${output7}`);
 
+// User pattern Rock, Paper, Scissors
+const output8 = network.run(1,2,3);
+
+console.log('User Picked Rock, Paper, Scissors:');
+console.log(`${output8}`);
+
+// User pattern Scissors, Paper, Rock
+const output9 = network.run(3,2,1);
+
+console.log('User Picked Scissors, Paper, Rock:');
+console.log(`${output9}`);
+
+// User pattern long
+const output9 = network.run(3,2,1,3,1,2,3,1,2,2,1,3,2,3,3,1,2);
+
+console.log('User Pattern Long');
+console.log(`${output9}`);
