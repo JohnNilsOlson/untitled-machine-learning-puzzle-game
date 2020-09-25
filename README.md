@@ -105,7 +105,7 @@ Brain.js
 
 ## **Component Diagram**
 
-![Diagram of React Components](./public/app-component-diagram.png)
+![Diagram of React Components](./public/app-component-diagram-two.png)
 </div>
 
 <div align="center">
