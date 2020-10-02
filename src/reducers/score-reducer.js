@@ -10,6 +10,11 @@ export default (state = defaultState, action) => {
         ...state,
         playerScore: state.playerScore + 1
       }
+    case 'INCREMENT_AI':
+      return {
+        ...state,
+        AIScore: state.AIScore + 1
+      }
     default:
       return state;
   }
