@@ -7,16 +7,9 @@ export default (state = defaultState, action) => {
     case 'ADD_DATA':
       const { input, output } = action;
       const round = { input: input, output: output };
-      if (!state.trainingData) {
-        return { 
-          ...state,
-          trainingData: [round]
-        }
-      } else {
-        return {
-          ...state,
-          trainingData: [...state.trainingData, round]
-        }
+      return {
+        ...state,
+        trainingData: [...state.trainingData, round]
       }
     default:
       return state;
