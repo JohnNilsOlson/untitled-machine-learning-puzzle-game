@@ -11,20 +11,16 @@ describe('trainingDataReducer', () => {
   test('Should add training data', () => {
     const input = [1,2]
     const output = 2
-    const id = 1
     action = {
       type: 'ADD_DATA',
       input: input,
       output: output,
-      id: id
     }
     expect(trainingDataReducer({}, action)).toEqual({
-      [id] : {
-        input: [1,2],
-        output: 2,
-        id: id 
-      }
+      trainingData: [
+        {input: [1,2],output: 2,}
+      ]
     });
   });
-  
+
 });
