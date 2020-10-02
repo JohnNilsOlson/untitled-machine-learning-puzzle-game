@@ -20,4 +20,14 @@ describe('scoreReducer', () => {
       AIScore: 0
     });
   });
+
+  test('Should increment AI score by 1', () => {
+    const action = {
+      type: 'INCREMENT_AI'
+    }
+    expect(scoreReducer(defaultState, action)).toEqual({
+      playerScore: 0,
+      AIScore: 1
+    });
+  });
 });
