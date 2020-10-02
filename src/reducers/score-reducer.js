@@ -4,5 +4,13 @@ const defaultState = {
 }
 
 export default (state = defaultState, action) => {
-  return state;
+  switch (action.type) {
+    case 'INCREMENT_PLAYER':
+      return {
+        ...state,
+        playerScore: state.playerScore + 1
+      }
+    default:
+      return state;
+  }
 }
