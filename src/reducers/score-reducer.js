@@ -1,3 +1,5 @@
+import * as c from '../actions/ActionTypes';
+
 const defaultState = {
   playerScore: 0,
   AIScore: 0
@@ -5,12 +7,12 @@ const defaultState = {
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case 'INCREMENT_PLAYER':
+    case c.INCREMENT_PLAYER:
       return {
         ...state,
         playerScore: state.playerScore + 1
       }
-    case 'INCREMENT_AI':
+    case c.INCREMENT_AI:
       return {
         ...state,
         AIScore: state.AIScore + 1

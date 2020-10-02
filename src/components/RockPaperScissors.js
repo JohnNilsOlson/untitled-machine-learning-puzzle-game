@@ -11,7 +11,7 @@ function RockPaperScissors(props) {
   }
 
   //Handles determining winner
-  // 0 represents player(index[0] of matchup for training data - 1 represents AI (index[1] of matchup for training data))
+  // 0 represents player winning (index[0] of matchup for training data - 1 represents AI winning (index[1] of matchup for training data))
   const winCheck = (playerInput, AIInput) => {
     let winner = null;
     if (playerInput === AIInput) {
@@ -19,21 +19,21 @@ function RockPaperScissors(props) {
     } else {
       if (playerInput === 1)  {
         if (AIInput === 2) {
-          winner = 1;
+          winner = 0;
         } else {
-          winner = 2;
+          winner = 1;
         }
       } else if (playerInput === 2) {
         if (AIInput === 3) {
-          winner = 1;
+          winner = 0;
         } else {
-          winner = 2
+          winner = 1
         }
       } else {
         if (AIInput === 1) {
-          winner = 1;
+          winner = 0;
         } else {
-          winner = 2;
+          winner = 1;
         }
       }
     }
@@ -57,11 +57,13 @@ function RockPaperScissors(props) {
   return (
     <React.Fragment>
       <h3>Rock, Paper, Scissors</h3>
-      {/* <Button variant='outline-dark' onClick={()=> handleAddingData()}>Add Training Data Test Button</Button> */}
       <Button variant='outline-dark' onClick={()=> handleRound(1)}>Rock</Button>
       <Button variant='outline-dark' onClick={()=> handleRound(2)}>Paper</Button>
       <Button variant='outline-dark' onClick={()=> handleRound(3)}>Scissors</Button>
       <hr />
+      <h3>Score</h3>
+      <h5>Player: {props.playerScore} - AI: {props.AIScore}</h5>
+      <hr/>
       <h3>Training Data</h3>
       {props.trainingData.map((round, index) =>
         <React.Fragment>
@@ -78,7 +80,9 @@ function RockPaperScissors(props) {
 
 const mapStateToProps = state => {
   return {
-    trainingData: state.trainingData
+    trainingData: state.trainingData,
+    playerScore: state.PlayerScore,
+    AIScore: state.AIScore,
   }
 }
 

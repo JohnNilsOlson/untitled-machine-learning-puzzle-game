@@ -1,4 +1,5 @@
 import scoreReducer from '../../reducers/score-reducer';
+import * as c from '../../actions/ActionTypes';
 
 describe('scoreReducer', () => {
 
@@ -13,7 +14,7 @@ describe('scoreReducer', () => {
 
   test('Should increment player score by 1', () => {
     const action = {
-      type: 'INCREMENT_PLAYER'
+      type: c.INCREMENT_PLAYER
     }
     expect(scoreReducer(defaultState, action)).toEqual({
       playerScore: 1,
@@ -23,7 +24,7 @@ describe('scoreReducer', () => {
 
   test('Should increment AI score by 1', () => {
     const action = {
-      type: 'INCREMENT_AI'
+      type: c.INCREMENT_AI
     }
     expect(scoreReducer(defaultState, action)).toEqual({
       playerScore: 0,

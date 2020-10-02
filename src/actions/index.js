@@ -5,3 +5,11 @@ export const addTrainingData = (input, output) => ({
   input: input,
   output: output
 });
+
+export const incrementPlayerScore = () => ({
+  type: c.INCREMENT_PLAYER
+});
+
+export const incrementAIScore = () => ({
+  type: c.INCREMENT_AI
+});

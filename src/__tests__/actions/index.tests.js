@@ -8,4 +8,16 @@ describe('training datat reducer actions', () => {
       type: c.ADD_DATA
     });
   });
+
+  it('incrementPlayerScore should create INCREMENT_PLAYER action', () => {
+    expect(actions.incrementPlayerScore()).toEqual({
+      type: c.INCREMENT_PLAYER
+    });
+  });
+
+  it('incrementAIScore should create INCREMENT_AI action', () => {
+    expect(actions.incrementAIScore()).toEqual({
+      type: c.INCREMENT_AI
+    });
+  });
 });
