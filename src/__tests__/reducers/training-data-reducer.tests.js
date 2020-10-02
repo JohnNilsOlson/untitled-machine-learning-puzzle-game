@@ -1,4 +1,5 @@
 import trainingDataReducer from '../../reducers/training-data-reducer';
+import * as c from '../../actions/ActionTypes';
 
 describe('trainingDataReducer', () => {
 
@@ -21,7 +22,7 @@ describe('trainingDataReducer', () => {
     const input = [1,2]
     const output = 2
     action = {
-      type: 'ADD_DATA',
+      type: c.ADD_DATA,
       input: input,
       output: output,
     }
@@ -36,7 +37,7 @@ describe('trainingDataReducer', () => {
     const input = [1,3]
     const output = 1
     action = {
-      type: 'ADD_DATA',
+      type: c.ADD_DATA,
       input: input,
       output: output
     }
