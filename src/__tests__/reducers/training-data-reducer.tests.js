@@ -5,15 +5,10 @@ describe('trainingDataReducer', () => {
 
   let action;
 
-  const defaultState = {
-    trainingData: []
-  }
+  const defaultState = []
 
-  const stateWithData = {
-    trainingData: [{input:[1,2],output:2}]
-  }
-
-
+  const stateWithData = [{input:[1,2],output:2}]
+  
   test('Should return default state if no action type is passed into the reducer', () => {
     expect(trainingDataReducer({}, { type: null })).toEqual({});
   });
@@ -26,11 +21,9 @@ describe('trainingDataReducer', () => {
       input: input,
       output: output,
     }
-    expect(trainingDataReducer(defaultState, action)).toEqual({
-      trainingData: [
-        {input: [1,2],output: 2,}
-      ]
-    });
+    expect(trainingDataReducer(defaultState, action)).toEqual(
+      [{input: [1,2],output: 2,}]
+    );
   });
 
   test('Should add training data to non-empty training data array', () => {
@@ -41,12 +34,9 @@ describe('trainingDataReducer', () => {
       input: input,
       output: output
     }
-    expect(trainingDataReducer(stateWithData, action)).toEqual({
-      trainingData: [
-        {input: [1,2],output: 2},
-        {input: [1,3],output: 1}
-      ]
-    });
+    expect(trainingDataReducer(stateWithData, action)).toEqual(
+      [{input: [1,2],output: 2},{input: [1,3],output: 1}]
+    );
   });
 
 });
