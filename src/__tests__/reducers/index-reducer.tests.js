@@ -2,6 +2,7 @@ import rootReducer from '../../reducers/index';
 import trainingDataReducer from '../../reducers/training-data-reducer';
 import playerScoreReducer from '../../reducers/player-score-reducer';
 import AIScoreReducer from '../../reducers/ai-score-reducer';
+import * as c from '../../actions/ActionTypes';
 import { createStore } from 'redux';
 
 let store = createStore(rootReducer);
@@ -26,5 +27,17 @@ describe("rootReducer", () => {
 
   test('Check that initial state ofAIScoreReducer matches rootReducer', () => {
     expect(store.getState().AIScore).toEqual(AIScoreReducer(undefined, { type: null }));
+  });
+
+  test('Check that rootReducer correctly passes action to trainingDataReducer', () => {
+    const input = [1,2];
+    const output = 1
+    const action = {
+      type: c.ADD_DATA,
+      input: input,
+      output: output,
+    }
+    store.dispatch(action);
+    expect(store.getState().trainingData).toEqual(trainingDataReducer(undefined, action));
   });
 });
