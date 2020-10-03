@@ -48,4 +48,12 @@ describe("rootReducer", () => {
     store.dispatch(action);
     expect(store.getState().playerScore).toEqual(playerScoreReducer(undefined, action));
   });
+
+  test('Check that rootReducer correctly passes action to AIScoreReducer', () => {
+    const action = {
+      type: c.INCREMENT_AI
+    }
+    store.dispatch(action);
+    expect(store.getState().playerScore).toEqual(AIScoreReducer(undefined, action));
+  });
 });
