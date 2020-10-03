@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addTrainingData } from '../actions';
+import { addTrainingData, incrementPlayerScore, incrementAIScore } from '../actions';
 import Button from 'react-bootstrap/Button';
 
 function RockPaperScissors(props) {
@@ -19,21 +19,21 @@ function RockPaperScissors(props) {
     } else {
       if (playerInput === 1)  {
         if (AIInput === 2) {
-          winner = 0;
-        } else {
           winner = 1;
+        } else {
+          winner = 0;
         }
       } else if (playerInput === 2) {
         if (AIInput === 3) {
-          winner = 0;
+          winner = 1;
         } else {
-          winner = 1
+          winner = 0;
         }
       } else {
         if (AIInput === 1) {
-          winner = 0;
-        } else {
           winner = 1;
+        } else {
+          winner = 0;
         }
       }
     }
@@ -41,17 +41,29 @@ function RockPaperScissors(props) {
   }
 
   //Handles formatting and saving training data to state
-  const AddData = (playerInput, AIInput, winner) => {
+  const addData = (playerInput, AIInput, winner) => {
     const { dispatch } = props;
     const matchUp = [playerInput, AIInput];
     dispatch(addTrainingData(matchUp, winner));
+  }
+
+  const adjustScore = (winner) => {
+    const { dispatch } = props;
+    if (winner !== null) {
+      if (winner === 0) {
+        dispatch(incrementPlayerScore());
+      } else {
+        dispatch(incrementAIScore());
+      }
+    }
   }
 
   //Combines functions to handle a single round of Rock, Paper, Scissors
   const handleRound = (playerInput) => {
     let AIInput = getAIInput();
     let winner = winCheck(playerInput, AIInput);
-    AddData(playerInput, AIInput, winner);
+    adjustScore(winner);
+    addData(playerInput, AIInput, winner);
   }
 
   return (
@@ -81,7 +93,7 @@ function RockPaperScissors(props) {
 const mapStateToProps = state => {
   return {
     trainingData: state.trainingData,
-    playerScore: state.PlayerScore,
+    playerScore: state.playerScore,
     AIScore: state.AIScore,
   }
 }
