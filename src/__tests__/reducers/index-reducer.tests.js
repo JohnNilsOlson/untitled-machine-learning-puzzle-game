@@ -40,4 +40,12 @@ describe("rootReducer", () => {
     store.dispatch(action);
     expect(store.getState().trainingData).toEqual(trainingDataReducer(undefined, action));
   });
+
+  test('Check that rootReducer correctly passes action to playerScoreReducer', () => {
+    const action = {
+      type: c.INCREMENT_PLAYER
+    }
+    store.dispatch(action);
+    expect(store.getState().playerScore).toEqual(playerScoreReducer(undefined, action));
+  });
 });
