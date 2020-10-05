@@ -13,3 +13,7 @@ export const incrementPlayerScore = () => ({
 export const incrementAIScore = () => ({
   type: c.INCREMENT_AI
 });
+
+export const trainAI = (trainingData) => ({
+  type: c.TRAIN_AI
+});

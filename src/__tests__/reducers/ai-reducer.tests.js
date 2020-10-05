@@ -1,4 +1,4 @@
-import AIReducer from '../../reducers/ai-reducer';
+import * as c from '../../actions/ActionTypes';
 import brain from 'brain.js';
 
 describe('AIReducer', () => {
@@ -13,7 +13,7 @@ describe('AIReducer', () => {
       {input: [1,2], output: 1}
     ]
     const action = {
-      type: 'TRAIN_AI',
+      type: c.TRAIN_AI,
       trainingData: trainingData
     }
     expect(AIReducer(defaultState, action)).toHaveProperty('hiddenLayers');
