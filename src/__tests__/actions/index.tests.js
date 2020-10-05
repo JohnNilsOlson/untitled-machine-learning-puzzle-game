@@ -1,7 +1,7 @@
 import * as actions from './../../actions';
 import * as c from './../../actions/ActionTypes';
 
-describe('training datat reducer actions', () => {
+describe('reducer actions', () => {
 
   it('addTrainingData should create ADD_DATA action', () => {
     expect(actions.addTrainingData()).toEqual({
@@ -24,6 +24,12 @@ describe('training datat reducer actions', () => {
   it('trainAI should create TRAIN_AI action', () => {
     expect(actions.trainAI()).toEqual({
       type: c.TRAIN_AI
+    });
+  });
+
+  it('addUserInput should creat ADD_INPUT action', () => {
+    expect(actions.addUserInput()).toEqual({
+      type: c.ADD_INPUT
     });
   });
 });

@@ -1,4 +1,5 @@
 import userPatternReducer from '../../reducers/user-pattern-reducer';
+import * as c from '../../actions/ActionTypes';
 
 describe('user pattern reducer', () => {
 
@@ -11,7 +12,7 @@ describe('user pattern reducer', () => {
   test('Should correctly add value to user pattern array', () => {
     const input = 1;
     const action = {
-      type: 'ADD_INPUT',
+      type: c.ADD_INPUT,
       input: input
     }
     expect(userPatternReducer(defaultState, action)).toEqual([1])

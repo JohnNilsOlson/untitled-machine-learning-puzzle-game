@@ -17,3 +17,8 @@ export const incrementAIScore = () => ({
 export const trainAI = (trainingData) => ({
   type: c.TRAIN_AI
 });
+
+export const addUserInput = (input) => ({
+  type: c.ADD_INPUT,
+  input: input
+})
