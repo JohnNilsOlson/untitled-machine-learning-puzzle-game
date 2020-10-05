@@ -20,4 +20,10 @@ describe('training datat reducer actions', () => {
       type: c.INCREMENT_AI
     });
   });
+
+  it('trainAI should create TRAIN_AI action', () => {
+    expect(actions.trainAI()).toEqual({
+      type: c.TRAIN_AI
+    });
+  });
 });
