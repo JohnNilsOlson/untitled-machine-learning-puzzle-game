@@ -1,4 +1,4 @@
-import brain from 'brain.js';
+import brain from 'brain.js/src';
 import * as c from '../actions/ActionTypes';
 
 const defaultState = new brain.recurrent.RNN();
