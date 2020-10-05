@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addTrainingData, incrementPlayerScore, incrementAIScore } from '../actions';
+import { addTrainingData, incrementPlayerScore, incrementAIScore, trainAI, addUserInput } from '../actions';
 import Button from 'react-bootstrap/Button';
 
 function RockPaperScissors(props) {
@@ -8,6 +8,11 @@ function RockPaperScissors(props) {
   //Handles AI prediction for round
   const getAIInput = () => {
     return Math.floor(Math.random() * (4 - 1)) + 1;
+  }
+
+  const addToUserPattern = (playerInput) => {
+    const { dispatch } = props;
+    dispatch(addUserInput(playerInput));
   }
 
   //Handles determining winner
@@ -47,6 +52,7 @@ function RockPaperScissors(props) {
     dispatch(addTrainingData(matchUp, winner));
   }
 
+  //Handles adjusting score
   const adjustScore = (winner) => {
     const { dispatch } = props;
     if (winner !== null) {
@@ -64,6 +70,7 @@ function RockPaperScissors(props) {
     let winner = winCheck(playerInput, AIInput);
     adjustScore(winner);
     addData(playerInput, AIInput, winner);
+    addToUserPattern(playerInput);
   }
 
   return (
@@ -75,6 +82,9 @@ function RockPaperScissors(props) {
       <hr />
       <h3>Score</h3>
       <h5>Player: {props.playerScore} - AI: {props.AIScore}</h5>
+      <hr/>
+      <h3>Player Pattern</h3>
+      <p>{props.userPattern}</p>
       <hr/>
       <h3>Training Data</h3>
       {props.trainingData.map((round, index) =>
@@ -95,6 +105,8 @@ const mapStateToProps = state => {
     trainingData: state.trainingData,
     playerScore: state.playerScore,
     AIScore: state.AIScore,
+    AI: state.AI,
+    userPattern: state.userPattern
   }
 }
 
