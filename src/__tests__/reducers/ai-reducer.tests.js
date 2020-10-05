@@ -17,10 +17,5 @@ describe('AIReducer', () => {
       trainingData: trainingData
     }
     expect(AIReducer(defaultState, action)).toHaveProperty('hiddenLayers');
-    expect(AIReducer(defaultState, action)).toHaveProperty('input');
-    expect(AIReducer(defaultState, action)).toHaveProperty('options');
-    expect(AIReducer(defaultState, action)).toHaveProperty('output');
-    expect(AIReducer(defaultState, action)).toHaveProperty('outputConnector');
-    expect(AIReducer(defaultState, action)).toHaveProperty('type');
   });
 });
