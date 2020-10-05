@@ -1,4 +1,5 @@
 import * as c from '../../actions/ActionTypes';
+import AIReducer from '../../reducers/ai-reducer';
 import brain from 'brain.js';
 
 describe('AIReducer', () => {
