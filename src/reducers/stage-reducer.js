@@ -1,3 +1,9 @@
 export default (state = {}, action) => {
-  return state;
+  switch (action.type) {
+    case 'INCREMENT_STAGE':
+      const newState = state + 1;
+      return newState;
+    default:
+      return state;
+    }
 };
