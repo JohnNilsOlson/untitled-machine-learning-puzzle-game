@@ -15,7 +15,8 @@ export const incrementAIScore = () => ({
 });
 
 export const trainAI = (trainingData) => ({
-  type: c.TRAIN_AI
+  type: c.TRAIN_AI,
+  trainingData: trainingData
 });
 
 export const addUserInput = (input) => ({

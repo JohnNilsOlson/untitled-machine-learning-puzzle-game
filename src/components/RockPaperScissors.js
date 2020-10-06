@@ -3,13 +3,48 @@ import { connect } from 'react-redux';
 import { addTrainingData, incrementPlayerScore, incrementAIScore, trainAI, addUserInput } from '../actions';
 import Button from 'react-bootstrap/Button';
 
+// import brain from 'brain.js/src';
+
 function RockPaperScissors(props) {
+
+  //Placeholder for teaching AI the rules of Rock Paper Scissors
+  const trainingDataPlaceholder = [
+    {input: [1,2], output: 2},
+    {input: [2,3], output: 3},
+    {input: [3,1], output: 1},
+    {input: [2,1], output: 2},
+    {input: [3,2], output: 3},
+    {input: [1,3], output: 1},
+  ]
+
+  const handleSeedTraining = () => {
+    const { AI } = props;
+    AI.train(trainingDataPlaceholder, {
+      iterations: 200
+    });
+    console.log('Trained!');
+  }
+
+  //Placeholder for state controlled AI
+  // const AI = new brain.recurrent.RNN();
+  // AI.train(trainingDataPlaceHolder, {
+  //   iterations: 200
+  // });
 
   //Handles AI prediction for round
   const getAIInput = () => {
-    return Math.floor(Math.random() * (4 - 1)) + 1;
+    const { AI, trainingData, dispatch } = props;
+    console.log(trainingData);
+    if (trainingData.length === 0) {
+      return parseInt(AI.run());
+    } else {
+      dispatch(trainAI(trainingData));
+      // const { userPattern } = props;
+      return parseInt(AI.run());
+    }
   }
 
+  //Handles adding inputs to user pattern
   const addToUserPattern = (playerInput) => {
     const { dispatch } = props;
     dispatch(addUserInput(playerInput));
@@ -45,11 +80,27 @@ function RockPaperScissors(props) {
     return winner;
   }
 
+  const winningMoveCheck = (playerInput, AIInput) => {
+    let winningMove = null;
+    if (playerInput === AIInput) {
+      winningMove = null;
+    } else {
+      if (playerInput === 1)  {
+        winningMove = 2;
+      } else if (playerInput === 2) {
+        winningMove = 3;
+      } else {
+        winningMove = 1;
+      }
+    }
+    return winningMove;
+  }
+
   //Handles formatting and saving training data to state
-  const addData = (playerInput, AIInput, winner) => {
+  const addData = (playerInput, AIInput, winningMove) => {
     const { dispatch } = props;
     const matchUp = [playerInput, AIInput];
-    dispatch(addTrainingData(matchUp, winner));
+    dispatch(addTrainingData(matchUp, winningMove));
   }
 
   //Handles adjusting score
@@ -66,10 +117,13 @@ function RockPaperScissors(props) {
 
   //Combines functions to handle a single round of Rock, Paper, Scissors
   const handleRound = (playerInput) => {
-    let AIInput = getAIInput();
-    let winner = winCheck(playerInput, AIInput);
+    const AIInput = getAIInput();
+    const winner = winCheck(playerInput, AIInput);
+    const winningMove = winningMoveCheck(playerInput, AIInput);
     adjustScore(winner);
-    addData(playerInput, AIInput, winner);
+    if (winner !== null) {
+      addData(playerInput, AIInput, winningMove);
+    }
     addToUserPattern(playerInput);
   }
 
@@ -79,6 +133,7 @@ function RockPaperScissors(props) {
       <Button variant='outline-dark' onClick={()=> handleRound(1)}>Rock</Button>
       <Button variant='outline-dark' onClick={()=> handleRound(2)}>Paper</Button>
       <Button variant='outline-dark' onClick={()=> handleRound(3)}>Scissors</Button>
+      <Button variant='outline-dark' onClick={()=> handleSeedTraining()}>Seed Training</Button>
       <hr />
       <h3>Score</h3>
       <h5>Player: {props.playerScore} - AI: {props.AIScore}</h5>
@@ -89,10 +144,7 @@ function RockPaperScissors(props) {
       <h3>Training Data</h3>
       {props.trainingData.map((round, index) =>
         <React.Fragment>
-          <div id={index}>
-            <p>{round.input[0]} vs {round.input[1]}</p>
-            <p>Winner: {round.output}</p>
-          </div>
+          <p>{JSON.stringify(round)}</p>
           <hr/>
         </React.Fragment>
       )}
