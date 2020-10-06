@@ -6,12 +6,10 @@ const defaultState = new brain.recurrent.RNN();
 export default (state = defaultState, action) => {
   switch (action.type) {
     case c.TRAIN_AI:
-      console.log('Action: ' + action);
       const { trainingData } = action;
-      console.log('Training Data: ' + trainingData);
       const newState = state;
       newState.train(trainingData, {
-        iterations: 200
+        iterations: 500
       });
       return newState;
     default:
