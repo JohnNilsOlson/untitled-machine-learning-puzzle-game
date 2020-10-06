@@ -1,6 +1,8 @@
 import * as c from '../actions/ActionTypes';
 
-export default (state = {}, action) => {
+const defaultState = 1;
+
+export default (state = defaultState, action) => {
   switch (action.type) {
     case c.INCREMENT_STAGE:
       const newState = state + 1;
