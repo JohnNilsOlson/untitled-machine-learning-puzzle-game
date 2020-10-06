@@ -11,7 +11,7 @@ describe('stageReducer', () => {
 
   test('Should increment stage by 1', () => {
     const action = {
-      type: 'INCREMENT_STAGE'
+      type: c.INCREMENT_STAGE
     }
     expect(stageReducer(defaultState, action)).toEqual(2);
   });
