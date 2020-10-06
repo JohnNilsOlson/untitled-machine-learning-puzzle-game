@@ -32,4 +32,10 @@ describe('reducer actions', () => {
       type: c.ADD_INPUT
     });
   });
+
+  it('incrementStage should creat INCREMENT_STAGE action', () => {
+    expect(actions.incrementStage()).toEqual({
+      type: c.INCREMENT_STAGE
+    });
+  });
 });

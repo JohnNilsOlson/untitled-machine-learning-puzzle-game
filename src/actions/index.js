@@ -22,4 +22,8 @@ export const trainAI = (trainingData) => ({
 export const addUserInput = (input) => ({
   type: c.ADD_INPUT,
   input: input
-})
+});
+
+export const incrementStage = () => ({
+  type: c.INCREMENT_STAGE
+});
