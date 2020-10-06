@@ -9,38 +9,23 @@ function RockPaperScissors(props) {
 
   //Placeholder for teaching AI the rules of Rock Paper Scissors
   const trainingDataPlaceholder = [
-    {input: [1,2], output: 2},
-    {input: [2,3], output: 3},
-    {input: [3,1], output: 1},
-    {input: [2,1], output: 2},
-    {input: [3,2], output: 3},
-    {input: [1,3], output: 1},
+    {input: 1, output: 2},
+    {input: 2, output: 3},
+    {input: 3, output: 1}
   ]
-
-  const handleSeedTraining = () => {
-    const { AI } = props;
-    AI.train(trainingDataPlaceholder, {
-      iterations: 200
-    });
-    console.log('Trained!');
-  }
-
-  //Placeholder for state controlled AI
-  // const AI = new brain.recurrent.RNN();
-  // AI.train(trainingDataPlaceHolder, {
-  //   iterations: 200
-  // });
 
   //Handles AI prediction for round
   const getAIInput = () => {
     const { AI, trainingData, dispatch } = props;
-    console.log(trainingData);
     if (trainingData.length === 0) {
+      AI.train(trainingDataPlaceholder, {
+        iterations: 200
+      });
       return parseInt(AI.run());
     } else {
       dispatch(trainAI(trainingData));
-      // const { userPattern } = props;
-      return parseInt(AI.run());
+      const { userPattern } = props;
+      return parseInt(AI.run(userPattern[userPattern.length -1]));
     }
   }
 
@@ -97,10 +82,9 @@ function RockPaperScissors(props) {
   }
 
   //Handles formatting and saving training data to state
-  const addData = (playerInput, AIInput, winningMove) => {
+  const addData = (playerInput, winningMove) => {
     const { dispatch } = props;
-    const matchUp = [playerInput, AIInput];
-    dispatch(addTrainingData(matchUp, winningMove));
+    dispatch(addTrainingData(playerInput, winningMove));
   }
 
   //Handles adjusting score
@@ -122,9 +106,10 @@ function RockPaperScissors(props) {
     const winningMove = winningMoveCheck(playerInput, AIInput);
     adjustScore(winner);
     if (winner !== null) {
-      addData(playerInput, AIInput, winningMove);
+      addData(playerInput, winningMove);
     }
     addToUserPattern(playerInput);
+    console.log(AIInput);
   }
 
   return (
@@ -133,7 +118,6 @@ function RockPaperScissors(props) {
       <Button variant='outline-dark' onClick={()=> handleRound(1)}>Rock</Button>
       <Button variant='outline-dark' onClick={()=> handleRound(2)}>Paper</Button>
       <Button variant='outline-dark' onClick={()=> handleRound(3)}>Scissors</Button>
-      <Button variant='outline-dark' onClick={()=> handleSeedTraining()}>Seed Training</Button>
       <hr />
       <h3>Score</h3>
       <h5>Player: {props.playerScore} - AI: {props.AIScore}</h5>
