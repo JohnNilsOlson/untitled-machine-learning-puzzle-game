@@ -25,10 +25,14 @@ class RPSStageOne extends React.Component {
     } else if (this.state.scissors === true && input === 'rock') {
       this.setState({scissors: false});
       dispatch(addTrainingData(3,1));
-      dispatch(incrementStage());
     } else {
       alert('Incorrect!');
     }
+  }
+
+  stageChange = () => {
+    const { dispatch } = this.props;
+    dispatch(incrementStage());
   }
 
   render() {
@@ -40,16 +44,26 @@ class RPSStageOne extends React.Component {
     } else if (this.state.scissors === true) {
       currentStep = 'What beats scissors?'
     }
-    return (
-      <React.Fragment>
-        <h1>Rock, Paper, Scissors - Stage 1</h1>
-        <h3>Define the rules of Rock, Paper, Scissors and teach them to your AI</h3>
-        <h3>{currentStep}</h3>
-        <Button variant='outline-dark' onClick={()=>this.handleAnswerClick('rock')}>Rock</Button>
-        <Button variant='outline-dark' onClick={()=>this.handleAnswerClick('paper')}>Paper</Button>
-        <Button variant='outline-dark' onClick={()=>this.handleAnswerClick('scissors')}>Scissors</Button>
-      </React.Fragment>
-    );
+    if (this.state.rock === false && this.state.paper === false && this.state.scissors === false) {
+      return (
+        <React.Fragment>
+          <h1>Rock, Paper, Scissors - Stage 1</h1>
+          <h3>Well done!</h3>
+          <Button variant='outline-dark' onClick={()=>this.stageChange()}>Train</Button>
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <React.Fragment>
+          <h1>Rock, Paper, Scissors - Stage 1</h1>
+          <h3>Define the rules of Rock, Paper, Scissors and teach them to your AI</h3>
+          <h3>{currentStep}</h3>
+          <Button variant='outline-dark' onClick={()=>this.handleAnswerClick('rock')}>Rock</Button>
+          <Button variant='outline-dark' onClick={()=>this.handleAnswerClick('paper')}>Paper</Button>
+          <Button variant='outline-dark' onClick={()=>this.handleAnswerClick('scissors')}>Scissors</Button>
+        </React.Fragment>
+      );
+    }
   }
 }
 
