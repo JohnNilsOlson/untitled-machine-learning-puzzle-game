@@ -1,13 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RockPaperScissors from './RockPaperScissors';
+import RPSStageOne from './RPSStageOne';
+import RPSStageTwo from './RPSStageTwo';
 
-function StageControl(props) {
-  if (props.currentStage === 1) {
-    return <h1>Rock Paper Scissors Stage 1</h1>
+function stageControl(props) {
+  if (props.stage === 1) {
+    return <RPSStageOne />
   } else {
-    return <h1>Rock Paper Scissors Stage 2</h1>
+    return <RPSStageTwo />
   }
 }
 
-export default StageControl;
+const mapStateToProps = state => {
+  return {
+    stage: state.stage
+  }
+}
+
+export default connect(mapStateToProps)(stageControl);
