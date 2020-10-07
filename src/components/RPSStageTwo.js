@@ -6,14 +6,8 @@ import Button from 'react-bootstrap/Button';
 
 function RPSStageTwo(props) {
 
-  const trainingDataPlaceholder = [
-    {input: 1, output: 2},
-    {input: 2, output: 3},
-    {input: 3, output: 1}
-  ]
-
   const AI = new brain.recurrent.LSTM();
-  AI.train(trainingDataPlaceholder, {
+  AI.train(props.trainingData, {
     iterations: 2000
   });
 
