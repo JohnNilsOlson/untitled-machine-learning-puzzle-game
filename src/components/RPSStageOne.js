@@ -18,13 +18,14 @@ class RPSStageOne extends React.Component {
     const { dispatch } = this.props;
     if (this.state.rock === true && input === 'paper') {
       this.setState({rock: false, paper: true});
-      dispatch(addTrainingData({input: 1, output: 2}));
+      dispatch(addTrainingData(1,2));
     } else if (this.state.paper === true && input === 'scissors') {
       this.setState({paper: false, scissors: true});
-      dispatch(addTrainingData({input: 2, output: 3}));
+      dispatch(addTrainingData(2,3));
     } else if (this.state.scissors === true && input === 'rock') {
       this.setState({scissors: false});
-      dispatch(addTrainingData({input: 3, output: 1}));
+      dispatch(addTrainingData(3,1));
+      dispatch(incrementStage());
     } else {
       alert('Incorrect!');
     }
