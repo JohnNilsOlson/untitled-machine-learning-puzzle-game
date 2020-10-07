@@ -4,6 +4,7 @@ import playerScoreReducer from '../../reducers/player-score-reducer';
 import AIScoreReducer from '../../reducers/ai-score-reducer';
 import AIReducer from '../../reducers/ai-reducer';
 import userPatternReducer from '../../reducers/user-pattern-reducer';
+import stageReducer from '../../reducers/stage-reducer';
 import * as c from '../../actions/ActionTypes';
 import { createStore } from 'redux';
 
@@ -17,6 +18,7 @@ describe("rootReducer", () => {
     expect(rootReducer({}, { type: null })).toHaveProperty('AIScore');
     expect(rootReducer({}, { type: null })).toHaveProperty('AI');
     expect(rootReducer({}, { type: null })).toHaveProperty('userPattern');
+    expect(rootReducer({}, { type: null })).toHaveProperty('stage');
   });
 
   test('Check that initial state of trainingDataReducer matches rootReducer', () => {
@@ -37,6 +39,10 @@ describe("rootReducer", () => {
 
   test('Check that initial state of userPatternReducer matches rootReducer', () => {
     expect(store.getState().userPattern).toEqual(userPatternReducer(undefined, {type: null }));
+  });
+
+  test('Check that initial state of stageReducer matches rootReducer', () => {
+    expect(store.getState().stage).toEqual(stageReducer(undefined, {type: null }));
   });
 
   test('Check that rootReducer correctly passes action to trainingDataReducer', () => {
@@ -87,5 +93,13 @@ describe("rootReducer", () => {
     }
     store.dispatch(action);
     expect(store.getState().userPattern).toEqual(userPatternReducer(undefined, action));
+  });
+
+  test('Check that rootReducer correctly passes action to stageReducer', () => {
+    const action = {
+      type: c.INCREMENT_STAGE
+    }
+    store.dispatch(action);
+    expect(store.getState().stage).toEqual(stageReducer(undefined, action));
   });
 });
