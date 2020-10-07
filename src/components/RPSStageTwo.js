@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addTrainingData, incrementPlayerScore, incrementAIScore, trainAI, addUserInput } from '../actions';
+import { incrementPlayerScore, incrementAIScore, addUserInput } from '../actions';
 import brain from 'brain.js/src';
 import Button from 'react-bootstrap/Button';
 
@@ -51,12 +51,6 @@ function RPSStageTwo(props) {
     }
     return winner;
   }
-
-  //Handles formatting and saving training data to state
-  // const addData = (playerInput, winningMove) => {
-  //   const { dispatch } = props;
-  //   dispatch(addTrainingData(playerInput, winningMove));
-  // }
 
   //Handles adjusting score
   const adjustScore = (winner) => {
