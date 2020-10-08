@@ -10,10 +10,10 @@ import scissorsIcon from '../assets/images/scissors.png';
 import Button from 'react-bootstrap/Button';
 
 function RPSStageOne(props) {
-  
-  const  [ rock, setRock ]  = useState(true);
+
+  const [ rock, setRock ]  = useState(true);
   const [ paper, setPaper ] = useState(false);
-  const  [scissors, setScissors ] = useState(false);
+  const [scissors, setScissors ] = useState(false);
 
   const handleAnswerClick = (input) => {
     const { dispatch } = props;
