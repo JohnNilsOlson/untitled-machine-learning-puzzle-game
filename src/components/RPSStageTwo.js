@@ -13,12 +13,13 @@ function RPSStageTwo(props) {
   const [ AI ] = useState(new brain.recurrent.LSTM());
   const [ playerScore, setPlayerScore ]  = useState(0);
   const [ AIScore, setAIScore ]  = useState(0);
-  const [ roundCount, setRoundCount ] = useState(0);
+  const [ roundCount, setRoundCount ] = useState(1);
 
-  AI.train(props.trainingData, {
-    iterations: 2000
-  });
-  
+  if (props.userPattern.length === 0) {
+    AI.train(props.trainingData, {
+      iterations: 2000
+    });
+  }
 
   //Handles AI prediction for round
   const getAIInput = () => {
@@ -91,6 +92,7 @@ function RPSStageTwo(props) {
       <img src={scissorsIcon} alt='scissors' width='100' height='100' onClick={()=> handleRound(3)}/>
       <hr />
       <h3>Score</h3>
+      <h5>Round: {roundCount}</h5>
       <h5>Player: {playerScore} - AI: {AIScore}</h5>
       <hr/>
     </React.Fragment>
