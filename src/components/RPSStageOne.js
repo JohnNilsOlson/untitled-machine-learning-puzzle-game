@@ -7,7 +7,27 @@ import rockIcon from '../assets/images/rock.png';
 import paperIcon from '../assets/images/paper.png';
 import scissorsIcon from '../assets/images/scissors.png';
 
+import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+
+const containerStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexDirection: 'row'
+}
+
+const iconButtonStyle = {
+  margin: 20,
+  height: 100,
+  weight: 100
+}
+
+const stepIconStyle = {
+  margin: 20,
+  width: 250,
+  height: 250
+}
 
 function RPSStageOne(props) {
 
@@ -58,12 +78,14 @@ function RPSStageOne(props) {
     return (
       <React.Fragment>
         <h1>Rock, Paper, Scissors - Stage 1</h1>
-        <h3>Define the rules of Rock, Paper, Scissors and teach them to your AI</h3>
-        <img src={currentStep} alt='' width='250' height='250' />
+        <h3>Identify the Correct Winning Move</h3>
+        <img src={currentStep} alt='' style={stepIconStyle}/>
         <br />
-        <img src={rockIcon} alt='rock' width='100' height='100' onClick={()=>handleAnswerClick('rock')}/>
-        <img src={paperIcon} alt='paper'  width='100' height='100' onClick={()=>handleAnswerClick('paper')}/>
-        <img src={scissorsIcon} alt='scissors' width='100' height='100' onClick={()=>handleAnswerClick('scissors')}/>
+        <Container style={containerStyle}>
+          <img src={rockIcon} alt='rock' style={iconButtonStyle} onClick={()=>handleAnswerClick('rock')}/>
+          <img src={paperIcon} alt='paper'  style={iconButtonStyle} onClick={()=>handleAnswerClick('paper')}/>
+          <img src={scissorsIcon} alt='scissors' style={iconButtonStyle} onClick={()=>handleAnswerClick('scissors')}/>
+        </Container>
       </React.Fragment>
     );
   }

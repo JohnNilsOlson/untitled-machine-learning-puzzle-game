@@ -8,6 +8,21 @@ import rockIcon from '../assets/images/rock.png';
 import paperIcon from '../assets/images/paper.png';
 import scissorsIcon from '../assets/images/scissors.png';
 
+import Container from 'react-bootstrap/Container';
+
+const containerStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexDirection: 'row'
+}
+
+const iconButtonStyle = {
+  margin: 20,
+  height: 100,
+  weight: 100
+}
+
 function RPSStageTwo(props) {
 
   const [ AI ] = useState(new brain.recurrent.LSTM());
@@ -79,20 +94,19 @@ function RPSStageTwo(props) {
     const winner = winCheck(playerInput, AIInput);
     adjustScore(winner);
     setRoundCount(roundCount + 1);
-    console.log(roundCount);
-    console.log(AIInput);
     addToUserPattern(playerInput);
   }
 
   return (
     <React.Fragment>
       <h3>Rock, Paper, Scissors - Stage 2</h3>
-      <img src={rockIcon} alt='rock' width='100' height='100' onClick={()=> handleRound(1)}/>
-      <img src={paperIcon} alt='paper'  width='100' height='100' onClick={()=> handleRound(2)}/>
-      <img src={scissorsIcon} alt='scissors' width='100' height='100' onClick={()=> handleRound(3)}/>
-      <hr />
-      <h3>Score</h3>
+      <Container style={containerStyle}>
+        <img src={rockIcon} alt='rock' style={iconButtonStyle} onClick={()=> handleRound(1)}/>
+        <img src={paperIcon} alt='paper' style={iconButtonStyle} onClick={()=> handleRound(2)}/>
+        <img src={scissorsIcon} alt='scissors' style={iconButtonStyle} onClick={()=> handleRound(3)}/>
+      </Container>
       <h5>Round: {roundCount}</h5>
+      <h3>Score</h3>
       <h5>Player: {playerScore} - AI: {AIScore}</h5>
       <hr/>
     </React.Fragment>
