@@ -14,27 +14,12 @@ describe("rootReducer", () => {
 
   test('Should return default state if no action type is recognized', () => {
     expect(rootReducer({}, { type: null })).toHaveProperty('trainingData');
-    expect(rootReducer({}, { type: null })).toHaveProperty('playerScore');
-    expect(rootReducer({}, { type: null })).toHaveProperty('AIScore');
-    expect(rootReducer({}, { type: null })).toHaveProperty('AI');
     expect(rootReducer({}, { type: null })).toHaveProperty('userPattern');
     expect(rootReducer({}, { type: null })).toHaveProperty('stage');
   });
 
   test('Check that initial state of trainingDataReducer matches rootReducer', () => {
     expect(store.getState().trainingData).toEqual(trainingDataReducer(undefined, { type: null }));
-  });
-
-  test('Check that initial state of playerScoreReducer matches rootReducer', () => {
-    expect(store.getState().playerScore).toEqual(playerScoreReducer(undefined, { type: null }));
-  });
-
-  test('Check that initial state of AIScoreReducer matches rootReducer', () => {
-    expect(store.getState().AIScore).toEqual(AIScoreReducer(undefined, { type: null }));
-  });
-
-  test('Check that initial state of AIReducer matches rootReducer', () => {
-    expect(store.getState().AI).toEqual(AIReducer(undefined, {type: null }));
   });
 
   test('Check that initial state of userPatternReducer matches rootReducer', () => {
@@ -55,34 +40,6 @@ describe("rootReducer", () => {
     }
     store.dispatch(action);
     expect(store.getState().trainingData).toEqual(trainingDataReducer(undefined, action));
-  });
-
-  test('Check that rootReducer correctly passes action to playerScoreReducer', () => {
-    const action = {
-      type: c.INCREMENT_PLAYER
-    }
-    store.dispatch(action);
-    expect(store.getState().playerScore).toEqual(playerScoreReducer(undefined, action));
-  });
-
-  test('Check that rootReducer correctly passes action to AIScoreReducer', () => {
-    const action = {
-      type: c.INCREMENT_AI
-    }
-    store.dispatch(action);
-    expect(store.getState().playerScore).toEqual(AIScoreReducer(undefined, action));
-  });
-
-  test('Check that rootReducer correctly passes action to AIReducer', () => {
-    const trainingData = [
-      {input: [1,2], output: 1}
-    ]
-    const action = {
-      type: c.TRAIN_AI,
-      trainingData: trainingData
-    }
-    store.dispatch(action);
-    expect(store.getState().AI).toEqual(AIReducer(undefined, action));
   });
 
   test('Check that rootReducer correctly passes action to userPatternReducer',() => {
