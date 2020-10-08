@@ -3,9 +3,14 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import { incrementStage, addTrainingData } from '../actions';
 
+import rockIcon from '../assets/images/rock.png';
+import paperIcon from '../assets/images/paper.png';
+import scissorsIcon from '../assets/images/scissors.png';
+
 import Button from 'react-bootstrap/Button';
 
 function RPSStageOne(props) {
+  
   const  [ rock, setRock ]  = useState(true);
   const [ paper, setPaper ] = useState(false);
   const  [scissors, setScissors ] = useState(false);
@@ -35,11 +40,11 @@ function RPSStageOne(props) {
 
   let currentStep; 
   if (rock === true) {
-    currentStep = 'What beats rock?'
+    currentStep = rockIcon;
   } else if (paper === true) {
-    currentStep = 'What beats paper?'
+    currentStep = paperIcon;
   } else if (scissors === true) {
-    currentStep = 'What beats scissors?'
+    currentStep = scissorsIcon;
   }
   if (rock === false && paper === false && scissors === false) {
     return (
@@ -54,10 +59,11 @@ function RPSStageOne(props) {
       <React.Fragment>
         <h1>Rock, Paper, Scissors - Stage 1</h1>
         <h3>Define the rules of Rock, Paper, Scissors and teach them to your AI</h3>
-        <h3>{currentStep}</h3>
-        <Button variant='outline-dark' onClick={()=>handleAnswerClick('rock')}>Rock</Button>
-        <Button variant='outline-dark' onClick={()=>handleAnswerClick('paper')}>Paper</Button>
-        <Button variant='outline-dark' onClick={()=>handleAnswerClick('scissors')}>Scissors</Button>
+        <img src={currentStep} alt='' width='250' height='250' />
+        <br />
+        <img src={rockIcon} alt='rock' width='100' height='100' onClick={()=>handleAnswerClick('rock')}/>
+        <img src={paperIcon} alt='paper'  width='100' height='100' onClick={()=>handleAnswerClick('paper')}/>
+        <img src={scissorsIcon} alt='scissors' width='100' height='100' onClick={()=>handleAnswerClick('scissors')}/>
       </React.Fragment>
     );
   }
