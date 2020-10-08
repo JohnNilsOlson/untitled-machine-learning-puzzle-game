@@ -2,6 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { incrementPlayerScore, incrementAIScore, addUserInput } from '../actions';
 import brain from 'brain.js/src';
+
+import rockIcon from '../assets/images/rock.png';
+import paperIcon from '../assets/images/paper.png';
+import scissorsIcon from '../assets/images/scissors.png';
+
 import Button from 'react-bootstrap/Button';
 
 function RPSStageTwo(props) {
@@ -76,9 +81,9 @@ function RPSStageTwo(props) {
   return (
     <React.Fragment>
       <h3>Rock, Paper, Scissors - Stage 2</h3>
-      <Button variant='outline-dark' onClick={()=> handleRound(1)}>Rock</Button>
-      <Button variant='outline-dark' onClick={()=> handleRound(2)}>Paper</Button>
-      <Button variant='outline-dark' onClick={()=> handleRound(3)}>Scissors</Button>
+      <img src={rockIcon} alt='rock' width='100' height='100' onClick={()=> handleRound(1)}/>
+      <img src={paperIcon} alt='paper'  width='100' height='100' onClick={()=> handleRound(2)}/>
+      <img src={scissorsIcon} alt='scissors' width='100' height='100' onClick={()=> handleRound(3)}/>
       <hr />
       <h3>Score</h3>
       <h5>Player: {props.playerScore} - AI: {props.AIScore}</h5>
