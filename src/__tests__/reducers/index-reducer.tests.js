@@ -1,8 +1,9 @@
 import rootReducer from '../../reducers/index';
 import trainingDataReducer from '../../reducers/training-data-reducer';
-import playerScoreReducer from '../../reducers/player-score-reducer';
-import AIScoreReducer from '../../reducers/ai-score-reducer';
-import AIReducer from '../../reducers/ai-reducer';
+// import playerScoreReducer from '../../reducers/player-score-reducer';
+// import AIScoreReducer from '../../reducers/ai-score-reducer';
+// import AIReducer from '../../reducers/ai-reducer';
+import levelReducer from '../../reducers/level-reducer';
 import userPatternReducer from '../../reducers/user-pattern-reducer';
 import stageReducer from '../../reducers/stage-reducer';
 import * as c from '../../actions/ActionTypes';
@@ -28,6 +29,10 @@ describe("rootReducer", () => {
 
   test('Check that initial state of stageReducer matches rootReducer', () => {
     expect(store.getState().stage).toEqual(stageReducer(undefined, {type: null }));
+  });
+  
+  test('Check that initial state of levelReducer matches rootReducer', () => {
+    expect(store.getState().level).toEqual(levelReducer(undefined, {type: null }));
   });
 
   test('Check that rootReducer correctly passes action to trainingDataReducer', () => {
@@ -58,5 +63,15 @@ describe("rootReducer", () => {
     }
     store.dispatch(action);
     expect(store.getState().stage).toEqual(stageReducer(undefined, action));
+  });
+
+  test('Check that rootReducer correctly passes action to levelReducer',() => {
+    const level = 1;
+    const action = {
+      type: c.LEVEL_CHANGE,
+      level: level
+    }
+    store.dispatch(action);
+    expect(store.getState().level).toEqual(levelReducer(undefined, action));
   });
 });
