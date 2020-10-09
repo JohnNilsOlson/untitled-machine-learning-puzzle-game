@@ -1,4 +1,5 @@
 import levelReducer from '../../reducers/level-reducer';
+import * as c from '../../actions/ActionTypes';
 
 describe('stageReducer', () => {
 
@@ -11,7 +12,7 @@ describe('stageReducer', () => {
   test('Should change level', () => {
     const level = 1;
     const action = {
-      type: 'LEVEL_CHANGE',
+      type: c.LEVEL_CHANGE,
       level: level
     }
     expect(levelReducer(defaultState, action)).toEqual(1);

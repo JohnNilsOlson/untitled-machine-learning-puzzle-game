@@ -38,4 +38,10 @@ describe('reducer actions', () => {
       type: c.INCREMENT_STAGE
     });
   });
+
+  it('levelChange should creat LEVEL_CHANGE action', () => {
+    expect(actions.levelChange()).toEqual({
+      type: c.LEVEL_CHANGE
+    });
+  });
 });

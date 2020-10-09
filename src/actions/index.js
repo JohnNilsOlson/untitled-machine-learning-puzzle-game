@@ -27,3 +27,8 @@ export const addUserInput = (input) => ({
 export const incrementStage = () => ({
   type: c.INCREMENT_STAGE
 });
+
+export const levelChange = (level) => ({
+  type: c.LEVEL_CHANGE,
+  level: level
+});
