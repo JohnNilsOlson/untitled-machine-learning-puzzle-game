@@ -1,5 +1,5 @@
 import React from 'react';
-import StageControl from './StageControl';
+import ViewControl from './ViewControl';
 
 import Container from 'react-bootstrap/Container';
 
@@ -15,7 +15,7 @@ function App() {
     <React.Fragment>
       <Container style={containerStyle}>
         <h1>Untitled Machine Learning Puzzle Game!</h1>
-        <StageControl/>
+        <ViewControl />
       </Container>
     </React.Fragment>
   );
