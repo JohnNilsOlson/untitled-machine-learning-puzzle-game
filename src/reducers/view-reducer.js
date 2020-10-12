@@ -1,3 +1,8 @@
 export default (state = {}, action) => {
-  return state;
+  switch (action.type) {
+    case 'PLAY':
+      return 'play';
+    default:
+      return state;
+  }
 }
