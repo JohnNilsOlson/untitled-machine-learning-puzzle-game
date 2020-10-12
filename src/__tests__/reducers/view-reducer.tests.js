@@ -18,4 +18,11 @@ describe('viewReducer', () => {
     }
     expect(viewReducer({}, action)).toEqual('learn');
   });
+
+  test('Should change view to data', () => {
+    const action = {
+      type: 'DATA'
+    }
+    expect(viewReducer({}, action)).toEqual('data');
+  });
 });
