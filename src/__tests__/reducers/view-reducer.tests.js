@@ -5,10 +5,17 @@ describe('viewReducer', () => {
     expect(viewReducer({}, { type: null })).toEqual({});
   });
 
-  test('Should change view', () => {
+  test('Should change view to play', () => {
     const action = {
       type: 'PLAY'
     }
     expect(viewReducer({}, action)).toEqual('play');
+  });
+
+  test('Should change view to learn', () => {
+    const action = {
+      type: 'LEARN'
+    }
+    expect(viewReducer({}, action)).toEqual('learn');
   });
 });
