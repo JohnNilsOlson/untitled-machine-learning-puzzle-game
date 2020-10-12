@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { playView, learnView, dataView } from '../actions';
+import LevelControl from './LevelControl';
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -27,7 +28,7 @@ function viewControl(props) {
 
   let visible;
   if (props.view === 'play') {
-    visible = 'Play';
+    visible = <LevelControl />;
   } else if (props.view === 'learn') {
     visible = 'Learn';
   } else if (props.view === 'data') {
