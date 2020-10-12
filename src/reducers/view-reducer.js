@@ -4,6 +4,8 @@ export default (state = {}, action) => {
       return 'play';
     case 'LEARN':
       return 'learn';
+    case 'DATA':
+      return 'data';
     default:
       return state;
   }
