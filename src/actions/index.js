@@ -32,3 +32,15 @@ export const levelChange = (level) => ({
   type: c.LEVEL_CHANGE,
   level: level
 });
+
+export const playView = () => ({
+  type: c.PLAY
+});
+
+export const learnView = () => ({
+  type: c.LEARN
+});
+
+export const dataView = () => ({
+  type: c.DATA
+});

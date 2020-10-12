@@ -44,4 +44,22 @@ describe('reducer actions', () => {
       type: c.LEVEL_CHANGE
     });
   });
+
+  it('playView should creat PLAY action', () => {
+    expect(actions.playView()).toEqual({
+      type: c.PLAY
+    });
+  });
+
+  it('learnView should creat LEARN action', () => {
+    expect(actions.learnView()).toEqual({
+      type: c.LEARN
+    });
+  });
+
+  it('dataView should creat DATA action', () => {
+    expect(actions.dataView()).toEqual({
+      type: c.DATA
+    });
+  });
 });

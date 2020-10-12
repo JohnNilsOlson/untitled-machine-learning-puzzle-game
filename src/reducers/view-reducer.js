@@ -1,10 +1,12 @@
+import * as c from '../actions/ActionTypes';
+
 export default (state = {}, action) => {
   switch (action.type) {
-    case 'PLAY':
+    case c.PLAY:
       return 'play';
-    case 'LEARN':
+    case c.LEARN:
       return 'learn';
-    case 'DATA':
+    case c.DATA:
       return 'data';
     default:
       return state;
