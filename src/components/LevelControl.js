@@ -3,15 +3,19 @@ import { connect } from 'react-redux';
 
 function LevelControl(props) {
   if (props.level === 0) {
-    return <h3>Introduction Placeholder</h3>
+    return (
+      <h1>Introduction Placeholder</h1>
+    )
   } else if (props.level === 1) {
-    return <h3>Rock, Paper, Scissors Placeholder</h3>
+    return (
+      <h1>Rock, Paper, Scissors Placeholder</h1>
+    )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    level: state.levelReducer
+    level: state.level
   }
 }
 
