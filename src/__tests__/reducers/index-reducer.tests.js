@@ -1,11 +1,9 @@
 import rootReducer from '../../reducers/index';
 import trainingDataReducer from '../../reducers/training-data-reducer';
-// import playerScoreReducer from '../../reducers/player-score-reducer';
-// import AIScoreReducer from '../../reducers/ai-score-reducer';
-// import AIReducer from '../../reducers/ai-reducer';
 import levelReducer from '../../reducers/level-reducer';
 import userPatternReducer from '../../reducers/user-pattern-reducer';
 import stageReducer from '../../reducers/stage-reducer';
+import viewReducer from '../../reducers/view-reducer';
 import * as c from '../../actions/ActionTypes';
 import { createStore } from 'redux';
 
@@ -17,6 +15,7 @@ describe("rootReducer", () => {
     expect(rootReducer({}, { type: null })).toHaveProperty('trainingData');
     expect(rootReducer({}, { type: null })).toHaveProperty('userPattern');
     expect(rootReducer({}, { type: null })).toHaveProperty('stage');
+    expect(rootReducer({}, { type: null })).toHaveProperty('view');
   });
 
   test('Check that initial state of trainingDataReducer matches rootReducer', () => {
@@ -33,6 +32,10 @@ describe("rootReducer", () => {
   
   test('Check that initial state of levelReducer matches rootReducer', () => {
     expect(store.getState().level).toEqual(levelReducer(undefined, {type: null }));
+  });
+
+  test('Check that initial state of viewReducer matches rootReducer', () => {
+    expect(store.getState().view).toEqual(viewReducer(undefined, {type: null }));
   });
 
   test('Check that rootReducer correctly passes action to trainingDataReducer', () => {
@@ -73,5 +76,13 @@ describe("rootReducer", () => {
     }
     store.dispatch(action);
     expect(store.getState().level).toEqual(levelReducer(undefined, action));
+  });
+
+  test('Check that rootReducer correctly passes action to viewReducer',() => {
+    const action = {
+      type: c.PLAY,
+    }
+    store.dispatch(action);
+    expect(store.getState().view).toEqual(viewReducer(undefined, action));
   });
 });
