@@ -1,6 +1,8 @@
 import * as c from '../actions/ActionTypes';
 
-export default (state = {}, action) => {
+const defaultState = 'play';
+
+export default (state = defaultState, action) => {
   switch (action.type) {
     case c.PLAY:
       return 'play';
