@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-function LevelControl(props) {
+function levelControl(props) {
   if (props.level === 0) {
     return (
-      <h1>Introduction Placeholder</h1>
+      <h3>Introduction Placeholder</h3>
     )
   } else if (props.level === 1) {
     return (
-      <h1>Rock, Paper, Scissors Placeholder</h1>
+      <h3>Rock, Paper, Scissors Placeholder</h3>
     )
   }
 }
@@ -19,4 +19,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(LevelControl);
+export default connect(mapStateToProps)(levelControl);

@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { playView, learnView, dataView } from '../actions';
 import LevelControl from './LevelControl';
+import DataControl from './DataControl';
+import LessonControl from './LessonControl';
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -11,6 +13,11 @@ const containerStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   flexDirection: 'row'
+}
+
+const buttonStyle = {
+  margin: 10,
+  width: 100
 }
 
 function viewControl(props) {
@@ -30,17 +37,17 @@ function viewControl(props) {
   if (props.view === 'play') {
     visible = <LevelControl />;
   } else if (props.view === 'learn') {
-    visible = 'Learn';
+    visible = <LessonControl />;
   } else if (props.view === 'data') {
-    visible = 'Data'
+    visible = <DataControl/>
   }
   return (
     <React.Fragment>
       <h1>{visible}</h1>
       <Container style={containerStyle}>
-        <Button variant='outline-dark' onClick={()=>viewChange('play')}>Play</Button>
-        <Button variant='outline-dark' onClick={()=>viewChange('learn')}>Learn</Button>
-        <Button variant='outline-dark' onClick={()=>viewChange('data')}>Visualize</Button>
+        <Button variant='outline-dark' style={buttonStyle} onClick={()=>viewChange('learn')}>Learn</Button>
+        <Button variant='outline-dark' style={buttonStyle} onClick={()=>viewChange('play')}>Play</Button>
+        <Button variant='outline-dark' style={buttonStyle} onClick={()=>viewChange('data')}>Visualize</Button>
       </Container>
     </React.Fragment>
   )
